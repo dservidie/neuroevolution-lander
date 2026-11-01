@@ -197,11 +197,13 @@ button:hover,
 
 #sim-holder,
 #network-wrap,
-#mosaic-wrap {
+#mosaic-wrap,
+#designer-holder {
   width: 100%;
 }
 
 #sim-holder canvas,
+#designer-holder canvas,
 #network-canvas,
 #mosaic-canvas {
   width: 100% !important;
@@ -249,6 +251,10 @@ button:hover,
 
 .file-btn {
   display: inline-block;
+}
+
+#delete {
+  margin-left: 0;
 }
 
 details {
