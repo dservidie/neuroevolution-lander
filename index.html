@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sentient Lander</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Orbitron:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body data-ready="false">
+    <header class="top">
+      <div class="brand">
+        <h1>Sentient Lander</h1>
+        <p>Lunar modules learning to land with neuroevolution.</p>
+      </div>
+      <nav>
+        <a class="active" href="/">Training</a>
+        <a href="/designer.html">Scene Designer</a>
+      </nav>
+    </header>
+
+    <section class="stats" aria-label="Training stats">
+      <div class="stat"><span>Generation</span><strong id="generation" data-testid="generation">1</strong></div>
+      <div class="stat"><span>Best fitness</span><strong id="best-fitness" data-testid="best-fitness">0.00</strong></div>
+      <div class="stat"><span>Success rate</span><strong id="success-rate" data-testid="success-rate">0%</strong></div>
+      <div class="stat"><span>Landed / crashed</span><strong id="outcomes">0 / 0</strong></div>
+      <div class="stat"><span>Frame</span><strong id="frame">0</strong></div>
+      <div class="stat"><span>Best ever</span><strong id="best-ever">—</strong></div>
+    </section>
+
+    <section class="controls" aria-label="Simulation controls">
+      <label>Speed
+        <input id="speed" type="range" min="1" max="20" value="1" />
+      </label>
+      <label>Population
+        <input id="pop-size" type="range" min="8" max="80" value="36" />
+      </label>
+      <label>Mutation
+        <input id="mutation" type="range" min="1" max="30" value="14" />
+      </label>
+      <label>Scenario
+        <select id="scenario"></select>
+      </label>
+      <label>Imported brain
+        <select id="brain-mode">
+          <option value="train">Keep training</option>
+          <option value="evaluate">Evaluate only</option>
+        </select>
+      </label>
+      <button id="pause" type="button">Pause</button>
+      <button id="reset" type="button">Reset</button>
+      <button id="export" class="primary" type="button">Export brain</button>
+      <label class="file-btn">Import brain
+        <input id="import" class="hidden-file" type="file" accept="application/json,.json" />
+      </label>
+    </section>
+
+    <p class="status" id="status" data-testid="status">Loading brains…</p>
+
+    <section class="workspace">
+      <div class="panel">
+        <header>
+          <h2>Lunar surface</h2>
+          <span id="speed-label">1x</span>
+        </header>
+        <div id="sim-holder"></div>
+        <div class="legend">
+          <span><i class="swatch sel"></i>focused</span>
+          <span><i class="swatch best"></i>best</span>
+          <span><i class="swatch ok"></i>landed</span>
+          <span><i class="swatch bad"></i>crashed</span>
+        </div>
+      </div>
+      <div class="panel">
+        <header>
+          <h2>Live neural network</h2>
+          <span id="focus-label">best</span>
+        </header>
+        <div id="network-wrap">
+          <canvas id="network-canvas" width="420" height="460" data-testid="network-canvas"></canvas>
+        </div>
+        <p class="status" id="brain-note">Blue weights are positive, red are negative. Node brightness is activation.</p>
+      </div>
+    </section>
+
+    <section class="panel mosaic-panel">
+      <header>
+        <h2>Population brains</h2>
+        <div class="pager">
+          <button id="page-prev" type="button">Prev</button>
+          <span id="page-label">1 / 1</span>
+          <button id="page-next" type="button">Next</button>
+        </div>
+      </header>
+      <div id="mosaic-wrap">
+        <canvas id="mosaic-canvas" width="1100" height="280" data-testid="mosaic-canvas"></canvas>
+      </div>
+    </section>
+
+    <details>
+      <summary>How brains move between scenarios</summary>
+      <p>
+        Export writes the focused champion as JSON (topology plus weights). Open another scenario,
+        choose Evaluate only to test that brain as-is, or Keep training to seed the next population
+        from it and keep evolving. The designer page can also build a new surface, pad, gravity and
+        obstacles for the same brain to face.
+      </p>
+    </details>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
