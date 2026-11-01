@@ -4,7 +4,8 @@ import { fileURLToPath } from 'node:url'
 
 const root = fileURLToPath(new URL('.', import.meta.url))
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
+  base: mode === 'production' ? '/neuroevolution-lander/' : '/',
   server: {
     port: 43180,
     host: '127.0.0.1',
@@ -28,4 +29,4 @@ export default defineConfig({
     fileParallelism: false,
     testTimeout: 20000,
   },
-})
+}))
