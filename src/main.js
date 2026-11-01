@@ -196,7 +196,7 @@ async function boot() {
     redrawViz(true)
   })
 
-  window.__sentient = {
+  window.__neuroevolution = {
     sim,
     exportBrain: () => sim.exportBrain(),
     importBrain: (json, mode) => sim.importBrain(json, mode),

@@ -126,7 +126,7 @@ export class NeuralNetwork {
   toJSON() {
     return {
       version: 1,
-      kind: 'sentient-lander-brain',
+      kind: 'neuroevolution-lander-brain',
       topology: {
         inputNodes: this.inputNodes,
         hiddenNodes: this.hiddenNodes,
@@ -142,8 +142,8 @@ export class NeuralNetwork {
   }
 
   static fromJSON(json) {
-    if (!json || json.kind !== 'sentient-lander-brain' || !json.topology || !json.weights) {
-      throw new Error('Not a sentient lander brain')
+    if (!json || json.kind !== 'neuroevolution-lander-brain' || !json.topology || !json.weights) {
+      throw new Error('Not a neuroevolution lander brain')
     }
     const { inputNodes, hiddenNodes, outputNodes } = json.topology
     const nn = new NeuralNetwork(inputNodes, hiddenNodes, outputNodes)

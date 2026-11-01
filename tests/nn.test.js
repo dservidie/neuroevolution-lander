@@ -11,7 +11,7 @@ describe('neural network save/load', () => {
     const inputs = [0.1, -0.2, 0.3, 0.9]
     const first = nn.predict(inputs)
     const json = nn.toJSON()
-    expect(json.kind).toBe('sentient-lander-brain')
+    expect(json.kind).toBe('neuroevolution-lander-brain')
     expect(json.topology.inputNodes).toBe(4)
     expect(json.topology.hiddenNodes).toBe(5)
     expect(json.topology.outputNodes).toBe(2)
@@ -39,6 +39,6 @@ describe('neural network save/load', () => {
   })
 
   it('rejects invalid JSON', () => {
-    expect(() => NeuralNetwork.fromJSON({ foo: 1 })).toThrow(/Not a sentient lander brain/)
+    expect(() => NeuralNetwork.fromJSON({ foo: 1 })).toThrow(/Not a neuroevolution lander brain/)
   })
 })

@@ -72,8 +72,8 @@ export const fitnessWeights = {
 }
 
 export const storageKeys = {
-  scenes: 'sentient-lander-scenes',
-  physics: 'sentient-lander-physics',
+  scenes: 'neuroevolution-lander-scenes',
+  physics: 'neuroevolution-lander-physics',
 }
 
 export function cloneConfig() {

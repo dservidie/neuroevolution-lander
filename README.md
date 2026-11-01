@@ -1,4 +1,4 @@
-# Sentient Lander
+# Neuroevolution Lander
 
 A 2D lunar landing module that learns to land with neuroevolution. Each lander has a small TensorFlow.js neural network. After every generation the best brains are selected, crossed over and mutated, the same loop used in [sentient-rockets](https://github.com/dservidie/sentient-rockets).
 
