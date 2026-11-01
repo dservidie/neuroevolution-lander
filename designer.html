@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sentient Lander — Scene Designer</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Orbitron:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <header class="top">
+      <div class="brand">
+        <h1>Scene Designer</h1>
+        <p>Build a lunar surface, pad, gravity and obstacles for training.</p>
+      </div>
+      <nav>
+        <a href="/">Training</a>
+        <a class="active" href="/designer.html">Scene Designer</a>
+      </nav>
+    </header>
+
+    <section class="controls">
+      <label>Scene name
+        <input id="scene-name" type="text" value="Dojo 1" />
+      </label>
+      <label>Gravity
+        <input id="gravity" type="range" min="20" max="100" value="50" />
+      </label>
+      <label>Pad width
+        <input id="pad-width" type="range" min="60" max="200" value="120" />
+      </label>
+      <label>Saved scenes
+        <select id="saved-list"></select>
+      </label>
+      <button id="randomize" type="button">Randomize</button>
+      <button id="add-rock" type="button">Add obstacle</button>
+      <button id="save" class="primary" type="button">Save scene</button>
+      <button id="load" type="button">Load</button>
+      <button id="download" type="button">Download JSON</button>
+      <label class="file-btn">Import JSON
+        <input id="import-scene" class="hidden-file" type="file" accept="application/json,.json" />
+      </label>
+      <button id="delete" type="button">Delete</button>
+    </section>
+    <p class="status" id="designer-status">Drag terrain dots, the pad, or rocks. Click empty sky to deselect.</p>
+    <section class="panel">
+      <div id="designer-holder"></div>
+    </section>
+    <script type="module" src="/src/designer.js"></script>
+  </body>
+</html>
