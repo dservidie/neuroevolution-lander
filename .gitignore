@@ -1,0 +1,10 @@
+node_modules
+dist
+test-results
+playwright-report
+playwright/.cache
+blob-report
+coverage
+.DS_Store
+*.log
+agent-tools
